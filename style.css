@@ -1,0 +1,332 @@
+:root {
+    /* Doctor Strange Palette */
+    --bg-color: #05030a; /* Kosmos sangat gelap */
+    --surface-color: rgba(18, 13, 28, 0.6); /* Sanctum Sanctorum Transparan */
+    --surface-border: rgba(42, 31, 64, 0.8);
+    --text-primary: #f8f1e1; /* Putih perkamen menyala */
+    --text-secondary: #a79ec4; /* Ungu pudar */
+    --magic-orange: #ff7e00; /* Eldritch Magic */
+    --cloak-red: #9e0000; /* Cloak of Levitation */
+    --time-stone: #00ff55; /* Agamotto Green */
+    
+    /* Fonts */
+    --font-heading: 'Cinzel', serif;
+    --font-body: 'Rajdhani', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-body);
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    line-height: 1.6;
+    /* Latar belakang portal kosmik */
+    background-image: 
+        radial-gradient(circle at 80% 20%, rgba(255, 126, 0, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 10% 80%, rgba(158, 0, 0, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, #05030a 0%, #020105 100%);
+    background-attachment: fixed;
+    font-size: 1.1rem;
+}
+
+h1, h2, h3, h4, .logo {
+    font-family: var(--font-heading);
+}
+
+/* Animations */
+@keyframes rotate {
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse-glow {
+    0% { box-shadow: 0 0 10px rgba(255, 126, 0, 0.4); }
+    50% { box-shadow: 0 0 25px rgba(255, 126, 0, 0.8), 0 0 40px rgba(255, 126, 0, 0.4); }
+    100% { box-shadow: 0 0 10px rgba(255, 126, 0, 0.4); }
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0px); }
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 5%;
+    background-color: rgba(5, 3, 10, 0.7);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid var(--surface-border);
+}
+
+.logo { 
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 800; 
+    font-size: 1.4rem; 
+    letter-spacing: 3px; 
+    color: var(--text-primary);
+    text-shadow: 0 0 15px rgba(255, 126, 0, 0.5);
+}
+
+.magic-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px dashed var(--magic-orange);
+    box-shadow: 0 0 12px var(--magic-orange), inset 0 0 12px var(--magic-orange);
+    background: transparent;
+    display: inline-block;
+    animation: rotate 6s linear infinite;
+}
+
+nav { 
+    display: flex; 
+    align-items: center; 
+}
+
+nav a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    margin-left: 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+nav a:hover { 
+    color: var(--magic-orange); 
+    text-shadow: 0 0 15px rgba(255, 126, 0, 0.8);
+    transform: translateY(-2px);
+}
+
+.btn-hire {
+    background: linear-gradient(45deg, #ff7e00, #ff4500);
+    color: #000 !important;
+    padding: 0.7rem 1.8rem;
+    margin-left: 2.5rem;
+    border-radius: 4px;
+    font-weight: 700;
+    font-family: var(--font-heading);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+    animation: pulse-glow 3s infinite;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-hire:hover { 
+    transform: scale(1.05);
+    color: #fff !important;
+    text-shadow: none;
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--magic-orange);
+    border: 2px solid var(--magic-orange);
+    padding: 0.7rem 1.8rem;
+    border-radius: 4px;
+    font-weight: 700;
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+    background-color: rgba(255, 126, 0, 0.15);
+    box-shadow: 0 0 20px rgba(255, 126, 0, 0.5), inset 0 0 10px rgba(255, 126, 0, 0.5);
+}
+
+section { 
+    padding: 6rem 5%; 
+}
+
+.section-title {
+    font-size: 3rem;
+    margin-bottom: 3rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    text-transform: uppercase;
+}
+
+.section-title::after {
+    content: "";
+    flex-grow: 1;
+    height: 2px;
+    background: linear-gradient(90deg, var(--magic-orange) 0%, transparent 100%);
+    box-shadow: 0 0 15px var(--magic-orange);
+}
+
+/* Glassmorphism Container */
+.container {
+    background-color: var(--surface-color);
+    padding: 3rem;
+    border-radius: 16px;
+    border: 1px solid var(--surface-border);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.floating-element {
+    animation: float 6s ease-in-out infinite;
+}
+
+.glow-text {
+    color: var(--text-primary);
+    text-shadow: 0 0 12px rgba(255, 126, 0, 0.6);
+}
+
+.glow-text-green {
+    color: var(--text-primary);
+    text-shadow: 0 0 12px rgba(0, 255, 85, 0.6);
+}
+
+.about-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid rgba(255, 126, 0, 0.3);
+}
+
+.stat-box {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 3px solid var(--magic-orange);
+    transition: transform 0.3s;
+}
+
+.stat-box:hover {
+    transform: translateX(10px);
+    background: rgba(255, 126, 0, 0.05);
+}
+
+.stat-box h4 { 
+    margin: 0 0 0.5rem 0; 
+    color: var(--magic-orange); 
+    text-transform: uppercase;
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
+.stat-box p { 
+    margin: 0; 
+    color: var(--text-primary); 
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.card {
+    background-color: var(--surface-color);
+    padding: 2.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--surface-border);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    animation: float 8s ease-in-out infinite;
+}
+
+.card:hover { 
+    transform: translateY(-10px) scale(1.02); 
+    border-color: var(--magic-orange);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 30px rgba(255, 126, 0, 0.2);
+    z-index: 10;
+}
+
+.card h3 { 
+    margin-top: 0; 
+    font-size: 1.5rem; 
+    letter-spacing: 1px;
+}
+
+.card p { 
+    color: var(--text-secondary); 
+    margin-bottom: 2rem; 
+    font-size: 1.1rem;
+}
+
+.tag-container { 
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 0.8rem; 
+}
+
+.tag {
+    background-color: rgba(158, 0, 0, 0.25); 
+    color: #ffd0a8;
+    border: 1px solid var(--cloak-red);
+    padding: 0.5rem 1.2rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    font-family: var(--font-heading);
+}
+
+.achievement-card {
+    background: linear-gradient(145deg, rgba(18, 13, 28, 0.7) 0%, rgba(5, 10, 8, 0.8) 100%);
+    border-left: 4px solid var(--time-stone);}
+/* TATA LETAK KHUSUS HP (WAJIB TARUH DI PALING BAWAH STYLE.CSS) */
+@media screen and (max-width: 768px) {
+    /* 1. Paksa sembunyikan teks menu yang menumpuk di tengah */
+    nav a { 
+        display: none !important; 
+    }
+    
+    /* 2. Pastikan tombol Hire Me tetap muncul */
+    nav a.btn-hire { 
+        display: inline-block !important; 
+        margin-left: 0 !important;
+        padding: 0.5rem 1rem !important;
+        font-size: 0.85rem !important;
+    }
+
+    /* 3. Paksa kotak About Me agar melebar penuh 100% (tidak terhimpit ke kiri) */
+    section {
+        padding: 2rem 5% !important;
+    }
+    
+    .container {
+        width: 100% !important;
+        padding: 1.5rem !important;
+        box-sizing: border-box !important;
+    }
+
+    /* 4. Kecilkan ukuran font agar nama tidak patah ke bawah */
+    .container h3 {
+        font-size: 1.5rem !important;
+    }
+    
+    .section-title {
+        font-size: 1.8rem !important;
+    }
+}
